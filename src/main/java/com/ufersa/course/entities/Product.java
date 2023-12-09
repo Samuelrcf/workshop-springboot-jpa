@@ -8,8 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "tb_product")
@@ -24,7 +24,7 @@ public class Product implements Serializable {
 	private Double price;
 	private String imgUrl;
 
-	@Transient
+	@ManyToMany(mappedBy = "products")
 	private Set<Category> categories = new HashSet<>(); // ensures that the collection is empty and not null
 
 	public Product() {
